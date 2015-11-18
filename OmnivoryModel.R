@@ -40,7 +40,7 @@ pikpr<-NULL
 plot(0,0, xlim=c(0, 1), ylim=c(0,1.8), type="n", xlab="Strength of omnivory", ylab="Maxima of Predator")
 for (w in seq(0,0.5,0.1)) {
   Pars["W"] <- w
-  out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
+  out <- as.data.frame(lsoda(State, Time, Omnivory, Pars, hmax=0.01))
   
 #Remove first three fourths of time series and consider last fourth for finding the peaks
   
@@ -53,7 +53,7 @@ for (w in seq(0,0.5,0.1)) {
   pikpr <- peaks((outpr$P), method="max")
   
   l <- length(out)
-  xstart <- c(R=out$R[l], co=out$C[l], pr=out$R[l])
+  State <- c(R=out$R[l], C=out$C[l], P=out$P[l])
   
   points(rep(w, length(pikpr)), pikpr, pch=".", col="black")
 }
