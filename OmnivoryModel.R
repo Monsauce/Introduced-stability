@@ -45,10 +45,12 @@ peaks <- function(x, method="max") {
 maxpr<-NULL
 pikpr<-NULL
 
+#set plot area for 3 rows and 2 columns of plots
+par(mfrow=c(3,2))
 
 ####Limit cycles Predator####
-#make bifurcation plot over parameter range of w (from 0 to 0.5) using Parameter Sets
-plot(0,0, xlim=c(0, 0.5), ylim=c(0,0.7), type="n", xlab="Strength of omnivory", ylab="Maxima of Predator")
+#make bifurcation plot over parameter range of w (from 0 to 0.5) 
+plot(0,0, xlim=c(0, 0.5), ylim=c(0,1.5), type="n", xlab="Strength of omnivory", ylab="Maxima of Predator")
 for (w in seq(0,0.5,0.01)) {
   Pars["W"] <- w
   out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
@@ -66,11 +68,34 @@ for (w in seq(0,0.5,0.01)) {
   l <- length(out)
   
   points(rep(w, length(pikpr)), pikpr, pch=".", col="black")
+  
+}
+
+#make bifurcation plot over parameter range of w (from 0 to 0.5) 
+plot(0,0, xlim=c(0, 0.5), ylim=c(0,1.5), type="n", xlab="Strength of omnivory", ylab="Minima of Predator")
+for (w in seq(0,0.5,0.01)) {
+  Pars["W"] <- w
+  out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
+  
+  #Remove first three fourths of time series and consider last fourth for finding the peaks
+  
+  lpr <- length(out$P) %/% 4
+  
+  outpr <- out[(3*lpr):(4*lpr),]
+  
+  maxpr <- c(maxpr, max(outpr$P))
+  
+  pikpr <- -peaks(-outpr$P, method="max")
+  
+  l <- length(out)
+  
+  points(rep(w, length(pikpr)), pikpr, pch=".", col="black")
+  
 }
 
 ####Limit cycles Consumer####
-#make bifurcation plot over parameter range of w (from 0 to 0.5) using Parameter Sets
-plot(0,0, xlim=c(0, 0.5), ylim=c(0,0.7), type="n", xlab="Strength of omnivory", ylab="Maxima of Predator")
+#make bifurcation plot over parameter range of w (from 0 to 0.5) for maxima 
+plot(0,0, xlim=c(0, 0.5), ylim=c(0,0.7), type="n", xlab="Strength of omnivory", ylab="Maxima of Consumer")
 for (w in seq(0,0.5,0.01)) {
   Pars["W"] <- w
   out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
@@ -81,13 +106,77 @@ for (w in seq(0,0.5,0.01)) {
   
   outpr <- out[(3*lpr):(4*lpr),]
   
-  maxpr <- c(maxpr, max(outpr$P))
+  maxpr <- c(maxpr, max(outpr$C))
   
   pikpr <- peaks((outpr$C), method="max")
   
   l <- length(out)
-  #State <- c(R=out$R[l], C=out$C[l], P=out$P[l])
   
   points(rep(w, length(pikpr)), pikpr, pch=".", col="black", cex=2)
 }
+
+#make bifurcation plot over parameter range of w (from 0 to 0.5) for mimima 
+plot(0,0, xlim=c(0, 0.5), ylim=c(0,0.7), type="n", xlab="Strength of omnivory", ylab="Minima of Consumer")
+for (w in seq(0,0.5,0.01)) {
+  Pars["W"] <- w
+  out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
+  
+  #Remove first three fourths of time series and consider last fourth for finding the peaks
+  
+  lpr <- length(out$C) %/% 4
+  
+  outpr <- out[(3*lpr):(4*lpr),]
+  
+  maxpr <- c(maxpr, max(outpr$C))
+  
+  pikpr <- -peaks(-outpr$P, method="max")
+  
+  l <- length(out)
+  
+  points(rep(w, length(pikpr)), pikpr, pch=".", col="black", cex=2)
+}
+
+####Limit cycles Resource####
+#make bifurcation plot over parameter range of w (from 0 to 0.5) 
+plot(0,0, xlim=c(0, 0.5), ylim=c(0,1), type="n", xlab="Strength of omnivory", ylab="Maxima of Resource")
+for (w in seq(0,0.5,0.01)) {
+  Pars["W"] <- w
+  out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
+  
+  #Remove first three fourths of time series and consider last fourth for finding the peaks
+  
+  lpr <- length(out$R) %/% 4
+  
+  outpr <- out[(3*lpr):(4*lpr),]
+  
+  maxpr <- c(maxpr, max(outpr$R))
+  
+  pikpr <- peaks((outpr$R), method="max")
+  
+  l <- length(out)
+  
+  points(rep(w, length(pikpr)), pikpr, pch=".", col="black", cex=2)
+}
+
+#make bifurcation plot over parameter range of w (from 0 to 0.5) 
+plot(0,0, xlim=c(0, 0.5), ylim=c(0,1), type="n", xlab="Strength of omnivory", ylab="Minima of Resource")
+for (w in seq(0,0.5,0.01)) {
+  Pars["W"] <- w
+  out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
+  
+  #Remove first three fourths of time series and consider last fourth for finding the peaks
+  
+  lpr <- length(out$R) %/% 4
+  
+  outpr <- out[(3*lpr):(4*lpr),]
+  
+  maxpr <- c(maxpr, max(outpr$R))
+  
+  pikpr <- -peaks(-outpr$P, method="max")
+  
+  l <- length(out)
+  
+  points(rep(w, length(pikpr)), pikpr, pch=".", col="black", cex=2)
+}
+
 
