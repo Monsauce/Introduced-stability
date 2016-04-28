@@ -41,7 +41,7 @@ pikpr<-NULL
 State <- c(R = 0.5, C = 0.5, P=0)
 Pars <- c(K=1, acr=7.5, apr=0.5, apc=2, mc=0.84617, mp=0.20586, bcr=5, bpr=0.5, bpc=2, r=4, W=0.5, e=1)
 plot(0,0, xlim=c(6, 9), ylim=c(0,1.5), type="n", xlab="acr (attack rate of consumer on resource)", ylab="Minima of Consumer")
-for (acr in seq(6,9,0.1)) {
+for (acr in seq(6,9,0.01)) {
   Pars["acr"] <- acr
   out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
   
@@ -64,7 +64,7 @@ for (acr in seq(6,9,0.1)) {
 State <- c(R = 0.5, C = 0.5, P=0.5)
 Pars <- c(K=1, acr=7.5, apr=0.5, apc=2, mc=0.84617, mp=0.20586, bcr=5, bpr=0.5, bpc=2, r=4, W=0.7, e=1)
 plot(0,0, xlim=c(6, 9), ylim=c(0,1.5), type="n", xlab="acr (attack rate of consumer on resource)", ylab="Minima of consumer")
-for (acr in seq(6,9,0.1)) {
+for (acr in seq(6,9,0.01)) {
   Pars["acr"] <- acr
   out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
   
@@ -87,7 +87,7 @@ for (acr in seq(6,9,0.1)) {
 State <- c(R = 0.5, C = 0.5, P=0.5)
 Pars <- c(K=1, acr=7.5, apr=0.5, apc=2, mc=0.84617, mp=0.20586, bcr=5, bpr=0.5, bpc=2, r=4, W=0.5, e=1)
 plot(0,0, xlim=c(6, 9), ylim=c(0,1.5), type="n", xlab="acr (attack rate of consumer on resource)", ylab="Minima of consumer")
-for (acr in seq(6,9,0.1)) {
+for (acr in seq(6,9,0.01)) {
   Pars["acr"] <- acr
   out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
   
@@ -110,7 +110,7 @@ for (acr in seq(6,9,0.1)) {
 State <- c(R = 0.5, C = 0.5, P=0.5)
 Pars <- c(K=1, acr=7.5, apr=0.5, apc=2, mc=0.84617, mp=0.20586, bcr=5, bpr=0.5, bpc=2, r=4, W=0.3, e=1)
 plot(0,0, xlim=c(6, 9), ylim=c(0,1.5), type="n", xlab="acr (attack rate of consumer on resource)", ylab="Minima of consumer")
-for (acr in seq(6,9,0.1)) {
+for (acr in seq(6,9,0.01)) {
   Pars["acr"] <- acr
   out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
   
@@ -140,7 +140,7 @@ pikpr<-NULL
 State <- c(R = 0.5, C = 0.5, P=0)
 Pars <- c(K=1, acr=7.5, apr=0.5, apc=2, mc=0.84617, mp=0.20586, bcr=5, bpr=0.5, bpc=2, r=4, W=0.5, e=1)
 plot(0,0, xlim=c(6, 9), ylim=c(0,1), type="n", xlab="acr (attack rate of consumer on resource)", ylab="Minima of resource")
-for (acr in seq(6,9,0.1)) {
+for (acr in seq(6,9,0.01)) {
   Pars["acr"] <- acr
   out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
   
@@ -163,7 +163,7 @@ for (acr in seq(6,9,0.1)) {
 State <- c(R = 0.5, C = 0.5, P=0.5)
 Pars <- c(K=1, acr=7.5, apr=0.5, apc=2, mc=0.84617, mp=0.20586, bcr=5, bpr=0.5, bpc=2, r=4, W=0.7, e=1)
 plot(0,0, xlim=c(6, 9), ylim=c(0,1), type="n", xlab="acr (attack rate of consumer on resource)", ylab="Minima of resource")
-for (acr in seq(6,9,0.1)) {
+for (acr in seq(6,9,0.01)) {
   Pars["acr"] <- acr
   out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
   
@@ -186,7 +186,7 @@ for (acr in seq(6,9,0.1)) {
 State <- c(R = 0.5, C = 0.5, P=0.5)
 Pars <- c(K=1, acr=7.5, apr=0.5, apc=2, mc=0.84617, mp=0.20586, bcr=5, bpr=0.5, bpc=2, r=4, W=0.5, e=1)
 plot(0,0, xlim=c(6, 9), ylim=c(0,1), type="n", xlab="acr (attack rate of consumer on resource)", ylab="Minima of resource")
-for (acr in seq(6,9,0.1)) {
+for (acr in seq(6,9,0.01)) {
   Pars["acr"] <- acr
   out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
   
@@ -209,7 +209,7 @@ for (acr in seq(6,9,0.1)) {
 State <- c(R = 0.5, C = 0.5, P=0.5)
 Pars <- c(K=1, acr=7.5, apr=0.5, apc=2, mc=0.84617, mp=0.20586, bcr=5, bpr=0.5, bpc=2, r=4, W=0.3, e=1)
 plot(0,0, xlim=c(6, 9), ylim=c(0,1), type="n", xlab="acr (attack rate of consumer on resource)", ylab="Minima of resource")
-for (acr in seq(6,9,0.1)) {
+for (acr in seq(6,9,0.01)) {
   Pars["acr"] <- acr
   out <- as.data.frame(lsoda(State, Time, Omnivory, Pars))
   
